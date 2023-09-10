@@ -10,6 +10,10 @@ inputs:
     required: false
     default: ''
     description: 'Specific docker image that should be used to request activation file'
+  containerVersion:
+    required: false
+    default: '1'
+    description: 'Version of docker tag to use for building the project.'
 outputs:
   filePath:
     description: 'Path of the manual activation file'
