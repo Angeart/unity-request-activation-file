@@ -7,7 +7,7 @@ async function run() {
 
     const { dockerfile, workspace, actionFolder } = Action;
     const unityVersion = Input.unityVersion;
-    const baseImage = new ImageTag(unityVersion, Input.customImage);
+    const baseImage = new ImageTag(unityVersion, Input.customImage, Input.containerVersion);
 
     // Build docker image
     const actionImage = await Docker.build({ path: actionFolder, dockerfile, baseImage });

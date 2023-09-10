@@ -4,9 +4,9 @@ import { exec } from '@actions/exec';
 const Docker = {
   async build(buildParameters, silent = false) {
     const { path, dockerfile, baseImage } = buildParameters;
-    const { version, customImage } = baseImage;
+    const { version, customImage, containerVersion } = baseImage;
 
-    const tag = new ImageTag(version, customImage);
+    const tag = new ImageTag(version, customImage, containerVersion);
     const command = `docker build ${path} \
       --file ${dockerfile} \
       --build-arg IMAGE=${baseImage} \

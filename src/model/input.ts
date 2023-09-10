@@ -7,6 +7,9 @@ const Input = {
   get unityVersion() {
     return core.getInput('unityVersion') || '2019.2.11f1';
   },
+  get containerVersion() {
+    return core.getInput('containerVersion') || '1';
+  },
 };
 
 export default Input;

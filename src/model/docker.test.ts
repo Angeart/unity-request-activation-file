@@ -6,7 +6,7 @@ describe('Docker', () => {
   it.skip('builds', async () => {
     const path = Action.actionFolder;
     const dockerfile = `${path}/Dockerfile`;
-    const baseImage = new ImageTag('2019.2.11f1', '');
+    const baseImage = new ImageTag('2019.2.11f1', '', '1');
     const tag = await Docker.build({ path, dockerfile, baseImage }, true);
     expect(tag).toBeInstanceOf(ImageTag);
     expect(tag.toString()).toStrictEqual('unity-builder:3');

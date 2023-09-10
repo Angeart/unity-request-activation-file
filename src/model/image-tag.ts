@@ -7,8 +7,9 @@ class ImageTag {
   public platform: any;
   public builderPlatform: string;
   public customImage: any;
+  public containerVersion: string;
 
-  constructor(unityVersion: string, customImage: any) {
+  constructor(unityVersion: string, customImage: any, containerVersion: string) {
     if (!ImageTag.versionPattern.test(unityVersion)) {
       throw new Error(`Invalid version "${unityVersion}".`);
     }
@@ -24,6 +25,7 @@ class ImageTag {
     this.platform = Platform.types.StandaloneLinux64;
     this.builderPlatform = builderPlatform;
     this.customImage = customImage;
+    this.containerVersion = containerVersion;
   }
 
   static get versionPattern() {
@@ -103,11 +105,9 @@ class ImageTag {
   }
 
   get tag() {
-    const dockerRepoVersion = 1;
-
     const versionAndTargetPlatform = `${this.version}-${this.builderPlatform}`.replace(/-+$/, '');
 
-    return `ubuntu-${versionAndTargetPlatform}-${dockerRepoVersion}`;
+    return `ubuntu-${versionAndTargetPlatform}-${this.containerVersion}`;
   }
 
   get image() {
